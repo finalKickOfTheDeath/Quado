@@ -6,19 +6,23 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Quado</title>
     </head>
-    <body></body>
+    <body>
+      <NewList></NewList>
+    </body>
   </html>
 </template>
 
 <script>
+import NewList from './components/NewList.vue'
+
 export default {
   name: 'App',
 
-  components: {},
+  components: {
+    NewList
+  },
 
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
 
   methods: {}
 }
