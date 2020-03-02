@@ -7,19 +7,19 @@
       <title>Quado</title>
     </head>
     <body>
-      <NewList></NewList>
+      <NewBoard></NewBoard>
     </body>
   </html>
 </template>
 
 <script>
-import NewList from './components/NewList.vue'
+import NewBoard from './components/NewBoard.vue'
 
 export default {
   name: 'App',
 
   components: {
-    NewList
+    NewBoard
   },
 
   data: () => ({}),
