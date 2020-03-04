@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
   name: 'NewBoard',
 
@@ -15,10 +13,17 @@ export default {
 
   data: () => ({}),
 
+  computed: {
+    idBoard() {
+      return this.$store.state.idBoard
+    }
+  },
+
   methods: {
-    ...mapActions({
-      addNewBoard: 'addNewBoard'
-    })
+    async addNewBoard() {
+      await this.$store.dispatch('addNewBoard')
+      this.$router.push({ path: `/boards/${this.idBoard}` })
+    }
   }
 }
 </script>

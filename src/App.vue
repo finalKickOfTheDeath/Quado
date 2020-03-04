@@ -7,20 +7,16 @@
       <title>Quado</title>
     </head>
     <body>
-      <NewBoard></NewBoard>
+      <router-view></router-view>
     </body>
   </html>
 </template>
 
 <script>
-import NewBoard from './components/NewBoard.vue'
-
 export default {
   name: 'App',
 
-  components: {
-    NewBoard
-  },
+  components: {},
 
   data: () => ({}),
 

@@ -5,18 +5,19 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 const http = axios.create({
-  baseURL: 'http://localhost:3333'
+  baseURL: process.env.VUE_APP_API_BASE_URL
 })
 
 export default new Vuex.Store({
   state: {
-    boards: {}
+    idBoard: '',
+    lists: {}
   },
 
   mutations: {
     addNewBoard(state, id) {
-      state.boards = { ...state.boards, id }
-      console.log(state.boards.id)
+      state.idBoard = id
+      console.log(state.idBoard)
     },
 
     addNewList(state, id) {
