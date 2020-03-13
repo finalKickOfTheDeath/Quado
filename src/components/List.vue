@@ -1,18 +1,18 @@
 <template>
-  <div class="paper">
-    <NewQuado></NewQuado>
-  </div>
+  <v-col cols="12" sm="6">
+    <v-card outlined>
+      <v-card-title class="headline">{{ list.title }}</v-card-title>
+    </v-card>
+  </v-col>
 </template>
 
 <script>
-import NewQuado from './NewQuado.vue'
-
 export default {
   name: 'List',
 
-  components: {
-    NewQuado
-  },
+  components: {},
+
+  props: ['list'],
 
   data: () => ({
     id: '',

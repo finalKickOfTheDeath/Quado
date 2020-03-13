@@ -1,15 +1,9 @@
 <template>
-  <!DOCTYPE html>
-  <html lang="fr">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Quado</title>
-    </head>
-    <body>
+  <v-app>
+    <v-content>
       <router-view></router-view>
-    </body>
-  </html>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -18,12 +12,8 @@ export default {
 
   components: {},
 
-  data: () => ({}),
-
-  methods: {}
+  data: () => ({
+    //
+  })
 }
 </script>
-
-<style lang="scss">
-@import '../node_modules/papercss/dist/paper.css';
-</style>

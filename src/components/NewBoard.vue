@@ -1,8 +1,16 @@
 <template>
-  <div class="paper container">
-    <h1>Ready to organize ?</h1>
-    <button class="btn-large" @click="addNewBoard()">Oh que oui !</button>
-  </div>
+  <v-container fill-height fluid>
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="6" class="text-center text-sm-right">
+        <h1 class="display-3 pb-3 font-weight-bold">Quado</h1>
+      </v-col>
+      <v-col cols="12" sm="6" class="text-center text-sm-left">
+        <v-btn x-large @click="addNewBoard()">
+          <v-icon size="30">fas fa-otter</v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -13,16 +21,10 @@ export default {
 
   data: () => ({}),
 
-  computed: {
-    idBoard() {
-      return this.$store.state.idBoard
-    }
-  },
-
   methods: {
     async addNewBoard() {
-      await this.$store.dispatch('addNewBoard')
-      this.$router.push({ path: `/boards/${this.idBoard}` })
+      const idBoard = await this.$store.dispatch('addNewBoard')
+      this.$router.push({ path: `/boards/${idBoard}` })
     }
   }
 }

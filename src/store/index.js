@@ -10,39 +10,33 @@ const http = axios.create({
 
 export default new Vuex.Store({
   state: {
-    idBoard: '',
     lists: {}
   },
 
   mutations: {
-    addNewBoard(state, id) {
-      state.idBoard = id
-      console.log(state.idBoard)
-    },
-
-    addNewList(state, id) {
-      state.board.push(id)
-      console.log(state.board)
+    addNewList(state, list) {
+      state.lists = { ...state.lists, [list.id]: { title: list.title } }
     }
   },
 
   actions: {
-    async addNewBoard({ commit }) {
+    async addNewBoard() {
       try {
-        const response = await http.post('/boards')
-        commit('addNewBoard', response.data.id)
+        let response = await http.post('/boards')
+        return response.data.id
       } catch (error) {
         console.log(error)
       }
     },
 
-    async addNewList({ commit }, title) {
+    async addNewList({ commit }, payload) {
+      console.log('on passe ici')
+      console.log(payload.title)
       try {
-        const response = await http.post('/lists', {
-          idBoard: '0',
-          title: title
+        const response = await http.post(`/boards/${payload.idBoard}/lists`, {
+          title: payload.title
         })
-        commit('addNewList', response.data.id)
+        commit('addNewList', response.data)
       } catch (error) {
         console.log(error)
       }

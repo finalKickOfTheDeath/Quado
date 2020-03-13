@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import NewBoard from '../components/NewBoard.vue'
-import NewList from '../components/NewList.vue'
+import Board from '../components/Board.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: NewBoard },
-  { path: '/boards/:idBoard', component: NewList }
+  { path: '/boards/:idBoard', component: Board }
 ]
 
 const router = new VueRouter({
