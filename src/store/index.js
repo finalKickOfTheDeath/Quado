@@ -10,17 +10,21 @@ const http = axios.create({
 
 export default new Vuex.Store({
   state: {
-    lists: {}
+    lists: []
   },
 
   mutations: {
-    addNewList(state, list) {
-      state.lists = { ...state.lists, [list.id]: { title: list.title } }
+		addList(state, list) {
+			state.lists.push(list)
+		},
+
+    setList(state, lists) {
+			state.lists = lists
     }
   },
 
   actions: {
-    async addNewBoard() {
+    async addBoard() {
       try {
         let response = await http.post('/boards')
         return response.data.id
@@ -29,14 +33,21 @@ export default new Vuex.Store({
       }
     },
 
-    async addNewList({ commit }, payload) {
-      console.log('on passe ici')
-      console.log(payload.title)
+    async addList({ commit }, payload) {
       try {
         const response = await http.post(`/boards/${payload.idBoard}/lists`, {
           title: payload.title
         })
-        commit('addNewList', response.data)
+        commit('addList', response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async fetchLists({ commit }, payload) {
+      try {
+        const response = await http.get(`/boards/${payload.idBoard}/lists`)
+        commit('setList', response.data.lists)
       } catch (error) {
         console.log(error)
       }

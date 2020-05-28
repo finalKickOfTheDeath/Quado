@@ -5,7 +5,7 @@
         <h1 class="display-3 pb-3 font-weight-bold">Quado</h1>
       </v-col>
       <v-col cols="12" sm="6" class="text-center text-sm-left">
-        <v-btn x-large @click="addNewBoard()">
+        <v-btn x-large @click="addBoard()">
           <v-icon size="30">fas fa-otter</v-icon>
         </v-btn>
       </v-col>
@@ -15,15 +15,15 @@
 
 <script>
 export default {
-  name: 'NewBoard',
+  name: 'Home',
 
   components: {},
 
   data: () => ({}),
 
   methods: {
-    async addNewBoard() {
-      const idBoard = await this.$store.dispatch('addNewBoard')
+    async addBoard() {
+      const idBoard = await this.$store.dispatch('addBoard')
       this.$router.push({ path: `/boards/${idBoard}` })
     }
   }

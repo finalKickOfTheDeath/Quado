@@ -4,14 +4,16 @@
       <List v-for="(list, id) in lists" :key="id" :list="list"></List>
     </v-row>
     <v-footer absolute>
-      <NewList></NewList>
+			<list-modal class="mr-4"></list-modal>
+			<quado-modal></quado-modal>
     </v-footer>
   </v-container>
 </template>
 
 <script>
 import List from '../components/List.vue'
-import NewList from '../components/NewList.vue'
+import ListModal from '../components/ListModal.vue'
+import QuadoModal from '../components/QuadoModal.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -19,17 +21,30 @@ export default {
 
   components: {
     List,
-    NewList
+		ListModal,
+		QuadoModal
   },
 
   data: () => ({}),
+
+  created() {
+    this.fetchLists()
+  },
+
+  watch: {
+    '$route': 'fetchLists'
+  },
 
   computed: mapState({
     lists: state => state.lists
   }),
 
-  methods: {}
+  methods: {
+    async fetchLists() {
+      await this.$store.dispatch('fetchLists', {
+        idBoard: this.$route.params.idBoard
+      })
+    }
+  }
 }
 </script>
-
-<style type="text/css" lang="sass" media="screen"></style>
