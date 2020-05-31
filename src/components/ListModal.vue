@@ -42,9 +42,8 @@ export default {
 
   methods: {
     async addList() {
-      console.log(this.$route.params)
       await this.$store.dispatch('addList', {
-        idBoard: this.$route.params.idBoard,
+        boardId: this.$route.params.boardId,
         title: this.title
       })
       this.title = ''

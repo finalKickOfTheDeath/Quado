@@ -42,7 +42,7 @@ export default {
   methods: {
     async fetchLists() {
       await this.$store.dispatch('fetchLists', {
-        idBoard: this.$route.params.idBoard
+        boardId: this.$route.params.boardId
       })
     }
   }

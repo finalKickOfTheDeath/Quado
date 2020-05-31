@@ -23,8 +23,8 @@ export default {
 
   methods: {
     async addBoard() {
-      const idBoard = await this.$store.dispatch('addBoard')
-      this.$router.push({ path: `/boards/${idBoard}` })
+      const boardId = await this.$store.dispatch('addBoard')
+      this.$router.push({ path: `/boards/${boardId}` })
     }
   }
 }
